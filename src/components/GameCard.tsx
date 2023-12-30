@@ -1,4 +1,4 @@
-import { Card, CardBody, Image, Text } from "@chakra-ui/react";
+import { Card, CardBody, Heading, Image, Text } from "@chakra-ui/react";
 import React from "react";
 import { Game } from "../hooks/httphook";
 
@@ -7,10 +7,15 @@ interface props {
 }
 const GameCard = ({ game }: props) => {
   return (
-    <Card overflow='hidden'>
+    <Card overflow="hidden">
       <Image src={game.background_image}></Image>
       <CardBody>
-        <Text fontSize='2xl'>{game.name}</Text>
+        <Heading fontSize="2xl">{game.name}</Heading>
+        {game.parent_platform.map((platformData) => (
+          <Text key={platformData.platform.id}>
+            {platformData.platform.name}
+          </Text>
+        ))}
       </CardBody>
     </Card>
   );
