@@ -14,7 +14,7 @@ const GameGrid = () => {
         columns={{ sm: 1, md: 2, lg: 3 }}
         padding={10}
         borderRadius={10}
-        spacing={10}
+        spacing={4}
       >
         {loading && skel.map((skeleton) => <SkeletonCard key={skeleton} />)}
         {data.map((game) => (
