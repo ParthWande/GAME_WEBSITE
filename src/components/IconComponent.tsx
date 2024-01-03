@@ -1,8 +1,15 @@
-import { FaWindows, FaPlaystation, FaXbox, FaApple, FaLinux, FaAndroid } from 'react-icons/fa';
-import { MdPhoneIphone } from 'react-icons/md';
-import { SiNintendo } from 'react-icons/si';
-import { BsGlobe } from 'react-icons/bs';
-import { Platform } from "../hooks/httphook";
+import {
+  FaWindows,
+  FaPlaystation,
+  FaXbox,
+  FaApple,
+  FaLinux,
+  FaAndroid,
+} from "react-icons/fa";
+import { MdPhoneIphone } from "react-icons/md";
+import { SiNintendo } from "react-icons/si";
+import { BsGlobe } from "react-icons/bs";
+import { Platform } from "../hooks/fetchgames";
 import { HStack, Icon } from "@chakra-ui/react";
 
 interface PlatformProps {
@@ -28,7 +35,9 @@ const IconComponent = ({ platform }: PlatformProps) => {
         const IconComponent = Icons[platform.slug] as React.ComponentType<any>;
 
         if (IconComponent) {
-          return <Icon as={IconComponent} key={platform.slug} color={'gray.500'} />;
+          return (
+            <Icon as={IconComponent} key={platform.slug} color={"gray.500"} />
+          );
         }
         return null;
       })}

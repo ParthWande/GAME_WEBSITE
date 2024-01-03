@@ -1,4 +1,3 @@
-
 import FetchData from "./fetchdata";
 import { Genre } from "./genrehook";
 
@@ -15,8 +14,14 @@ export interface Game {
   metacritic: number;
 }
 
-
-
-const httphook = (SelectedGenre: Genre | null) => FetchData<Game>('/games',{params:{genres:SelectedGenre?.id}},[SelectedGenre?.id]);
+const httphook = (
+  SelectedGenre: Genre | null,
+  SelectedPlatform: Platform | null
+) =>
+  FetchData<Game>(
+    "/games",
+    { params: { genres: SelectedGenre?.id, platforms: SelectedPlatform?.id } },
+    [SelectedGenre?.id, SelectedPlatform?.id]
+  );
 
 export default httphook;

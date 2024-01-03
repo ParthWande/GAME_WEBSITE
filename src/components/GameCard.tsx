@@ -1,5 +1,5 @@
 import { Card, CardBody, HStack, Heading, Image, Text } from "@chakra-ui/react";
-import { Game } from "../hooks/httphook";
+import { Game } from "../hooks/fetchgames";
 import IconComponent from "./IconComponent";
 import CriticScore from "./CriticScore";
 import GetproperUrl from "../hooks/image-correction";
