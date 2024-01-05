@@ -1,5 +1,5 @@
+import { GameQuery } from "../App";
 import FetchData from "./fetchdata";
-import { Genre } from "./genrehook";
 
 export interface Platform {
   id: number;
@@ -14,14 +14,17 @@ export interface Game {
   metacritic: number;
 }
 
-const httphook = (
-  SelectedGenre: Genre | null,
-  SelectedPlatform: Platform | null
-) =>
+const httphook = (gamequery: GameQuery) =>
   FetchData<Game>(
     "/games",
-    { params: { genres: SelectedGenre?.id, platforms: SelectedPlatform?.id } },
-    [SelectedGenre?.id, SelectedPlatform?.id]
+    {
+      params: {
+        genres: gamequery.genre?.id,
+        platforms: gamequery.platform?.id,
+        search: gamequery.searchtext 
+      },
+    },
+    [gamequery]
   );
 
 export default httphook;

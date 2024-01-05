@@ -2,15 +2,14 @@ import { SimpleGrid, Text } from "@chakra-ui/react";
 import httphook, { Platform } from "../hooks/fetchgames";
 import GameCard from "./GameCard";
 import SkeletonCard from "./skeleton";
-import { Genre } from "../hooks/genrehook";
+import { GameQuery } from "../App";
 
 interface props {
-  SelectedGenre: Genre | null;
-  SelectedPlatform: Platform | null;
+  gamequery: GameQuery
 }
 
-const GameGrid = ({ SelectedGenre, SelectedPlatform }: props) => {
-  const { data, error, loading } = httphook(SelectedGenre, SelectedPlatform);
+const GameGrid = ({ gamequery}: props) => {
+  const { data, error, loading } = httphook(gamequery);
   const skel = [1, 2, 3, 4, 5, 6];
   return (
     <>

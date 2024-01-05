@@ -19,7 +19,7 @@ const PlatformBar = ({ OnselectPlatform }: Plat) => {
   const { data, error } = FetchPlatforms();
   if (error) return <Text marginLeft={10}>Error UwU</Text>;
   return (
-    <Box marginLeft={10}>
+    <Box>
       <Menu>
         <MenuButton as={Button} rightIcon={<BsChevronDown />}>
           Platforms
