@@ -5,28 +5,26 @@ import SkeletonCard from "./skeleton";
 import { GameQuery } from "../App";
 
 interface props {
-  gamequery: GameQuery
+  gamequery: GameQuery;
 }
 
-const GameGrid = ({ gamequery}: props) => {
+const GameGrid = ({ gamequery }: props) => {
   const { data, error, loading } = httphook(gamequery);
   const skel = [1, 2, 3, 4, 5, 6];
-  return (
-    <>
-      {error && <Text>{error}</Text>}
 
-      <SimpleGrid
-        columns={{ sm: 1, md: 2, lg: 3 }}
-        padding={10}
-        borderRadius={10}
-        spacing={4}
-      >
-        {loading && skel.map((skeleton) => <SkeletonCard key={skeleton} />)}
-        {data.map((game) => (
-          <GameCard key={game.id} game={game} />
-        ))}
-      </SimpleGrid>
-    </>
+  if (error) return <Text>{error}</Text>;
+  return (
+    <SimpleGrid
+      columns={{ sm: 1, md: 2, lg: 3 }}
+      padding={10}
+      borderRadius={10}
+      spacing={4}
+    >
+      {loading && skel.map((skeleton) => <SkeletonCard key={skeleton} />)}
+      {data.map((game) => (
+        <GameCard key={game.id} game={game} />
+      ))}
+    </SimpleGrid>
   );
 };
 

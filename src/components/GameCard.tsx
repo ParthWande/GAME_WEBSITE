@@ -9,16 +9,16 @@ interface props {
 }
 const GameCard = ({ game }: props) => {
   return (
-    <Card overflow="hidden">
+    <Card overflow="hidden" >
       <Image src={GetproperUrl(game.background_image)}></Image>
       <CardBody>
-        <Heading fontSize="2xl">{game.name}</Heading>
         <HStack justifyContent={"space-between"}>
           <IconComponent
             platform={game.parent_platforms.map((p) => p.platform)}
           />
           <CriticScore score={game.metacritic} />
         </HStack>
+        <Heading fontSize="2xl">{game.name}</Heading>
       </CardBody>
     </Card>
   );
