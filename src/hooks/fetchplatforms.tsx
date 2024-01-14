@@ -1,9 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
-import FetchData, { Fetch } from "./fetchdata";
 import { Platform } from "./fetchgames";
-import apiClient from "../services/api-client";
+import APIClient, { Fetch } from "../services/api-client";
+
+const platform = new APIClient<Platform>('/platforms/lists/parents');
+
 
 export const FetchPlatforms = () => useQuery({
   queryKey:['platforms'],
-  queryFn: () => apiClient.get<Fetch<Platform>>('/platforms/lists/parents').then((response) => response.data)
+  queryFn: platform.getAll
 })

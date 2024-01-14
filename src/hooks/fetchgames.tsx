@@ -1,6 +1,9 @@
+import { useQuery } from "@tanstack/react-query";
 import { GameQuery } from "../Pages/HomePage";
-import FetchData from "./fetchdata";
+import { Fetch } from "../services/api-client";
+import APIClient from "../services/api-client";
 
+const games = new APIClient<Game>("/games");
 export interface Platform {
   id: number;
   name: string;
@@ -12,27 +15,27 @@ export interface Game {
   name: string;
   background_image: string;
   parent_platforms: { platform: Platform }[];
-  metacritic : number;
+  metacritic: number;
 }
 
-export interface description{
+export interface description {
   id: number;
-  name:string;
+  name: string;
   slug: string;
   description: string;
 }
 
 const httphook = (gamequery: GameQuery) =>
-  FetchData<Game>(
-    "/games",
-    {
-      params: {
-        genres: gamequery.genre?.id,
-        parent_platforms: gamequery.platform?.id,
-        search: gamequery.searchtext 
-      },
-    },
-    [gamequery]
-  );
+  useQuery<Fetch<Game>, Error>({
+    queryKey: ["game", gamequery],
+    queryFn: () =>
+      games.getAll({
+        params: {
+          genres: gamequery.genre?.id,
+          parent_platforms: gamequery.platform?.id,
+          search: gamequery.searchtext,
+        },
+      }),
+  });
 
 export default httphook;

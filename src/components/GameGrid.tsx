@@ -10,10 +10,10 @@ interface props {
 }
 
 const GameGrid = ({ gamequery,onclick }: props) => {
-  const { data, error, loading } = httphook(gamequery);
+  const { data, error, isLoading } = httphook(gamequery);
   const skel = [1, 2, 3, 4, 5, 6];
 
-  if (error) return <Text>{error}</Text>;
+  if (error) return <Text>{error.message}</Text>;
   return (
     <SimpleGrid
       columns={{ sm: 1, md: 2, lg: 3 }}
@@ -21,8 +21,8 @@ const GameGrid = ({ gamequery,onclick }: props) => {
       borderRadius={10}
       spacing={4}
     >
-      {loading && skel.map((skeleton) => <SkeletonCard key={skeleton} />)}
-      {data.map((game) => (
+      {isLoading && skel.map((skeleton) => <SkeletonCard key={skeleton} />)}
+      {data?.results.map((game) => (
         <GameCard key={game.id} game={game} onclick={(game)=>onclick(game)} />
       ))}
     </SimpleGrid>
