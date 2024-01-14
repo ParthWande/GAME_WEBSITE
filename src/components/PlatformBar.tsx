@@ -25,7 +25,7 @@ const PlatformBar = ({ OnselectPlatform }: Plat) => {
           Platforms
         </MenuButton>
         <MenuList>
-          {data.map((dat) => (
+          {data?.results.map((dat) => (
             <MenuItem onClick={() => OnselectPlatform(dat)} key={dat.id}>
               {dat.name}
             </MenuItem>

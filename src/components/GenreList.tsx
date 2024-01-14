@@ -17,15 +17,15 @@ interface props {
 }
 
 const GenreList = ({ onselectedGenre, selectedGenre }: props) => {
-  const { data, loading } = FetchGenre();
+  const { data, isLoading } = FetchGenre();
   const skel = [1, 2, 3, 4, 5, 6];
   return (
     <>
     <Heading fontSize={'2xl'} paddingLeft={10} marginTop={8}>Genres</Heading>
     <Box padding={8}>
       <List>
-        {loading && skel.map((sk) => <SkeletonGenre key={sk} />)}
-        {data.map((gen) => (
+        {isLoading && skel.map((sk) => <SkeletonGenre key={sk} />)}
+        {data?.results.map((gen) => (
           <ListItem key={gen.id} padding="5px">
             <HStack>
               <Image

@@ -1,4 +1,4 @@
-import { GameQuery } from "../App";
+import { GameQuery } from "../Pages/HomePage";
 import FetchData from "./fetchdata";
 
 export interface Platform {
@@ -8,10 +8,18 @@ export interface Platform {
 }
 export interface Game {
   id: number;
+  slug: string;
   name: string;
   background_image: string;
   parent_platforms: { platform: Platform }[];
-  metacritic: number;
+  metacritic : number;
+}
+
+export interface description{
+  id: number;
+  name:string;
+  slug: string;
+  description: string;
 }
 
 const httphook = (gamequery: GameQuery) =>
@@ -20,7 +28,7 @@ const httphook = (gamequery: GameQuery) =>
     {
       params: {
         genres: gamequery.genre?.id,
-        platforms: gamequery.platform?.id,
+        parent_platforms: gamequery.platform?.id,
         search: gamequery.searchtext 
       },
     },

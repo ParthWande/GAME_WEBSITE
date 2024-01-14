@@ -10,7 +10,7 @@ const NavBar = ({Onclick}: props) => {
   return (
     <HStack justifyContent={"space-between"} padding="10px">
       <Image src={logo} boxSize="60px" />
-      <SearchBar Onclick={(string)=>Onclick(string)}/>
+      <SearchBar Onclick={(searchedstring)=>Onclick(searchedstring)}/>
       <ColorSwitch />
     </HStack>
   );
