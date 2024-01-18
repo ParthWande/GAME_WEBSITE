@@ -1,19 +1,22 @@
 import { Input, InputGroup, InputLeftElement } from "@chakra-ui/react";
 import { useRef } from "react";
 import { BsSearch } from "react-icons/bs";
+import getGame from "../store";
+import { useNavigate } from "react-router-dom";
 
-interface props{
-    Onclick : (search :string) => void;
-}
-
-const SearchBar = ({Onclick}:props) => {
+const SearchBar = () => {
+  const onclick = getGame((s) => s.setSearchText);
   const ref = useRef<HTMLInputElement>(null);
+  const navigate = useNavigate();
 
   return (
     <form
       onSubmit={(event) => {
         event.preventDefault();
-        if (ref.current) Onclick(ref.current.value);
+        if (ref.current) {
+          onclick(ref.current.value);
+          navigate('/');
+        }
       }}
     >
       <InputGroup>

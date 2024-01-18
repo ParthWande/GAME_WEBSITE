@@ -12,11 +12,6 @@ const ColorSwitch = () => {
 
   return (
     <HStack>
-      {/* <Switch
-        colorScheme="green"
-        isChecked={colorMode == "light"}
-        onChange={toggleColorMode}
-      ></Switch> */}
       <Button onClick={toggleColorMode}>{text == 'light' ? <FaSun color="black"/> : <FaMoon/>}</Button>
     </HStack>
   );

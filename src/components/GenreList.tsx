@@ -11,12 +11,12 @@ import {
 } from "@chakra-ui/react";
 import GetproperUrl from "../hooks/image-correction";
 import SkeletonGenre from "./skeleton_genre";
-interface props {
-  onselectedGenre: (genre: Genre) => void;
-  selectedGenre: Genre | null;
-}
+import getGame from "../store";
 
-const GenreList = ({ onselectedGenre, selectedGenre }: props) => {
+
+const GenreList = () => {
+  const selectedGenre=getGame(s=>s.gameQuery.genre)
+  const onselectedGenre=getGame(s=>s.setGenre)
   const { data, isLoading } = FetchGenre();
   const skel = [1, 2, 3, 4, 5, 6];
   return (

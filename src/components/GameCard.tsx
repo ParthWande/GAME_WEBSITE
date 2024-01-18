@@ -4,23 +4,15 @@ import IconComponent from "./IconComponent";
 import CriticScore from "./CriticScore";
 import GetproperUrl from "../hooks/image-correction";
 import "../css/GameCard.css";
-import GameDetailPage from "../Pages/GameDetail";
 import { Link } from "react-router-dom";
 
 interface props {
   game: Game;
-  onclick: (game: Game) => void;
 }
-const GameCard = ({ game, onclick }: props) => {
+const GameCard = ({ game }: props) => {
   return (
-    <Card
-      overflow="hidden"
-      className="card"
-      onClick={() => {
-        onclick(game);
-      }}
-    >
-      <Link to={"/games/" + game.id}>
+    <Card overflow="hidden" className="card">
+      <Link to={"/games/" + game.slug}>
         <Image src={GetproperUrl(game.background_image)}></Image>
         <CardBody>
           <HStack justifyContent={"space-between"}>

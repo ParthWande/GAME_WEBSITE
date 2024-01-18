@@ -9,13 +9,12 @@ import {
 } from "@chakra-ui/react";
 import { BsChevronDown } from "react-icons/bs";
 import { FetchPlatforms } from "../hooks/fetchplatforms";
-import { Platform } from "../hooks/fetchgames";
+import getGame from "../store";
 
-interface Plat {
-  OnselectPlatform: (Platform: Platform) => void;
-}
 
-const PlatformBar = ({ OnselectPlatform }: Plat) => {
+
+const PlatformBar = () => {
+  const OnselectPlatform = getGame(s=>s.setPlatform)
   const { data, error } = FetchPlatforms();
   if (error) return <Text marginLeft={10}>Error UwU</Text>;
   return (
