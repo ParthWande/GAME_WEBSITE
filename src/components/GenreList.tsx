@@ -1,4 +1,4 @@
-import FetchGenre, { Genre } from "../hooks/genrehook";
+import FetchGenre from "../hooks/genrehook";
 import {
   Box,
   Button,

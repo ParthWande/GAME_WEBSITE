@@ -1,6 +1,5 @@
 import { create } from "zustand";
-import { Platform, Game } from "./hooks/fetchgames";
-import { Genre } from "./hooks/genrehook";
+import { Platform, Game, Genre } from "./hooks/fetchgames";
 
 interface GameQuery {
     genre?: Genre | null;
